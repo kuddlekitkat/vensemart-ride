@@ -6,6 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:vensemart_delivery/nav_bar_page.dart';
 import 'backend/apiservices/provider/provider.dart';
 import 'backend/core/injector.dart';
 import 'backend/core/session_manager.dart';
@@ -99,7 +100,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(brightness: Brightness.light),
         themeMode: _themeMode,
         home: SessionManager.instance.authToken.isNotEmpty
-            ? SignWithEmailWidget()
+            ? NavBarPage()
             : GetStartedWidget(),
       ),
     );

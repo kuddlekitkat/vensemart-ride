@@ -1,3 +1,5 @@
+import 'package:provider/provider.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../nav_bar_page.dart';
+import '../provider/provider_services.dart';
 
 class ProfilePageWidget extends StatefulWidget {
   const ProfilePageWidget({Key? key}) : super(key: key);
@@ -21,10 +24,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
   TextEditingController? textController4;
   TextEditingController? textController5;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  ProviderServices? providerServices;
 
   @override
   void initState() {
     super.initState();
+    providerServices = Provider.of<ProviderServices>(context, listen: false);
+    providerServices?.getUserDetails();
     textController1 = TextEditingController();
     textController2 = TextEditingController();
     textController3 = TextEditingController();

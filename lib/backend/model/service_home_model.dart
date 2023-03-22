@@ -23,42 +23,55 @@ class ServiceHomeModel {
 }
 
 class Data {
-  int? pendingRequests;
-  int? completedRequests;
-  int? cancelledRequests;
-  int? totalRequests;
-  List<dynamic>? requests;
+  int? totalOrder;
+  int? totalEarning;
+  int? todayOrder;
+  bool? availability;
+  int? pendingOrder;
+  int? completedOrder;
+  // List<dynamic>? requests;
+
+
 
   Data(
-      {this.pendingRequests,
-        this.completedRequests,
-        this.cancelledRequests,
-        this.totalRequests,
-        this.requests});
+      {this.totalOrder,
+        this.totalEarning,
+        this.todayOrder,
+        this.availability,
+        this.pendingOrder,
+        this.completedOrder
+      });
 
   Data.fromJson(Map<String, dynamic> json) {
-    pendingRequests = json['pending_requests'];
-    completedRequests = json['completed_requests'];
-    cancelledRequests = json['cancelled_requests'];
-    totalRequests = json['total_requests'];
-    if (json['requests'] != null) {
-      requests = <Requests>[];
-      json['requests'].forEach((v) {
-        requests!.add(Requests.fromJson(v));
-      });
-    }
+    totalOrder = json['total_order'];
+    totalEarning = json['total_earning'];
+    todayOrder = json['today_order'];
+    availability = json['availability'];
+    pendingOrder = json['pending_order'];
+    completedOrder = json['completed_order'];
+
+    // totalRequests = json['total_requests'];
+    // if (json['requests'] != null) {
+    //   requests = <Requests>[];
+    //   json['requests'].forEach((v) {
+    //     requests!.add(Requests.fromJson(v));
+    //   });
+    // }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['pending_requests'] = pendingRequests;
-    data['completed_requests'] = completedRequests;
-    data['cancelled_requests'] = cancelledRequests;
-    data['total_requests'] = totalRequests;
-    if (requests != null) {
-      data['requests'] =
-          requests!.map((v) => v).toList();
-    }
+    data['total_order'] = totalOrder;
+    data['total_earning'] = totalEarning;
+    data['today_orders'] = todayOrder;
+    data['availability'] = availability;
+    data['pending_order'] = pendingOrder;
+    data['completed_order'] = completedOrder;
+
+    // if (requests != null) {
+    //   data['requests'] =
+    //       requests!.map((v) => v).toList();
+    // }
     return data;
   }
 }

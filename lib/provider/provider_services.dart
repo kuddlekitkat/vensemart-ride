@@ -37,7 +37,6 @@ class ProviderServices extends ChangeNotifier {
   RegisterModel? get registerModel => _registerModel;
   RegisterModel? _registerModel;
 
-
   ServiceHomeModel? get serviceHomeModel => _serviceHhomeModel;
   ServiceHomeModel? _serviceHhomeModel;
 
@@ -90,7 +89,7 @@ class ProviderServices extends ChangeNotifier {
       if (response != null && response.statusCode == 200) {
         _isLoading = false;
         SessionManager.instance.isLoggedIn = true;
-        sendOTP(context);
+
         _loginModel = LoginModel.fromJson(response.data);
         ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
           content: Text('${_loginModel?.message}'),
@@ -135,8 +134,8 @@ class ProviderServices extends ChangeNotifier {
       Response? response = await authRepo.register(map!);
       if (response != null && response.statusCode == 200) {
         _registerModel = RegisterModel.fromJson(response.data);
-        print(_registerModel!.data!.email!);
-        print(_registerModel!.data!.mobile!);
+        print(_registerModel!.data!.userDetails!.email!);
+        print(_registerModel!.data!.userDetails!.mobile!);
         ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
           content: Text('${_registerModel?.message}'),
           duration: const Duration(seconds: 10),
@@ -145,8 +144,8 @@ class ProviderServices extends ChangeNotifier {
             onPressed: () {},
           ),
         ));
-        print(_registerModel!.data!.email!);
-        SessionManager.instance.authToken = _registerModel!.data!.apiToken!;
+        print(_registerModel!.data!.userDetails!.email!);
+        SessionManager.instance.authToken = _registerModel!.data!.userDetails!.apiToken!;
         _isLoading = false;
         sendOTP(context);
         Navigator.push(
@@ -184,11 +183,11 @@ class ProviderServices extends ChangeNotifier {
     try {
       _isLoading = true;
       notifyListeners();
-      print('${_loginModel?.data?.mobile}');
+      print('${_registerModel?.data?.userDetails!.mobile}');
 
-      print('${_registerModel?.data?.email}');
+      print('${_registerModel?.data?.userDetails!.email}');
 
-      phoneNumber = _loginModel?.data?.mobile ?? '';
+      phoneNumber = _registerModel?.data?.userDetails!.mobile ?? '';
       Response? response =
           await authRepo.sendOtp({'phone_number': phoneNumber!});
       if (response != null && response.statusCode == 200) {
@@ -1095,7 +1094,7 @@ class ProviderServices extends ChangeNotifier {
         SessionManager.instance.isLoggedIn = true;
 
         _servicesModel = ServicesModel.fromJson(response.data);
-        SessionManager.instance.authToken = _registerModel!.data!.apiToken!;
+        SessionManager.instance.authToken = _registerModel!.data!.userDetails!.apiToken!;
         // Navigator.pushAndRemoveUntil(
         //     context!,
         //     MaterialPageRoute(
@@ -1364,7 +1363,7 @@ class ProviderServices extends ChangeNotifier {
         SessionManager.instance.isLoggedIn = true;
 
         _servicesModel = ServicesModel.fromJson(response.data);
-        SessionManager.instance.authToken = _registerModel!.data!.apiToken!;
+        SessionManager.instance.authToken = _registerModel!.data!.userDetails!.apiToken!;
         // Navigator.pop(context!);
         // Navigator.push(
         //   context!,
@@ -1373,7 +1372,7 @@ class ProviderServices extends ChangeNotifier {
         //   ),
         // );
         SessionManager.instance.isLoggedIn = true;
-        SessionManager.instance.authToken = _registerModel!.data!.apiToken!;
+        SessionManager.instance.authToken = _registerModel!.data!.userDetails!.apiToken!;
       }
 
       if (response != null && response.statusCode != 200) {

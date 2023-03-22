@@ -507,7 +507,7 @@ class _RequestPageWidgetState extends State<RequestPageWidget> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: DefaultTabController(
-            length: 2,
+            length: 3,
             initialIndex: 0,
             child: Column(
               children: [
@@ -523,6 +523,10 @@ class _RequestPageWidgetState extends State<RequestPageWidget> {
                     ),
                     Tab(
                       text: 'Completed',
+                    ),
+
+                    Tab(
+                      text: 'Cancelled',
                     ),
                   ],
                 ),

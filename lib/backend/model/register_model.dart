@@ -22,7 +22,28 @@ class RegisterModel {
   }
 }
 
+
+
 class Data {
+
+  UserDetails? userDetails;
+
+  Data ({this.userDetails });
+
+  Data.fromJson(Map<String, dynamic> json) {
+    userDetails = json['user_details'] != null ? UserDetails.fromJson(json['user_details']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['user_details'] = userDetails;
+    return data;
+
+  }
+}
+
+class UserDetails {
+
   int? id;
   String? type;
   String? name;
@@ -65,7 +86,8 @@ class Data {
   String? updatedAt;
   int? isPlanActive;
 
-  Data(
+  UserDetails
+      (
       {this.id,
       this.type,
       this.name,
@@ -107,7 +129,7 @@ class Data {
       this.createdAt,
       this.updatedAt});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  UserDetails.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     type = json['type'];
     name = json['name'];

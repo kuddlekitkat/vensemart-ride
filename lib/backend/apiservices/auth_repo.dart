@@ -128,7 +128,7 @@ class AuthRepo with ApiServices {
   }
 
   Future<Response?> getUserDetails() async {
-    Response? response = await apiGetRequests("get_profile");
+    Response? response = await apiGetRequests("rider/get-profile");
 
     if (response != null) {
       return response;
