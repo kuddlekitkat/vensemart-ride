@@ -306,124 +306,124 @@ class _VehicleDetailsWidgetState extends State<VehicleDetailsWidget> {
                                     ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: textController3,
-                                    autofocus: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Choose a file',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyText2
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0x67000000),
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFF6F8FE),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.circular(0),
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(0),
-                                        ),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFF6F8FE),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.circular(0),
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(0),
-                                        ),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.circular(0),
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(0),
-                                        ),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.circular(0),
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(0),
-                                        ),
-                                      ),
-                                      filled: true,
-                                      fillColor: Color(0xFFF6F8FE),
-                                      prefixIcon: Icon(
-                                        FFIcons.kimageicon,
-                                      ),
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Sora',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                  ),
-                                ),
-                                FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: 'Upload',
-                                  options: FFButtonOptions(
-                                    width: 130,
-                                    height: 50,
-                                    color: Color(0xFF1456F1),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.white,
-                                        ),
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(0),
-                                      bottomRight: Radius.circular(10),
-                                      topLeft: Radius.circular(0),
-                                      topRight: Radius.circular(10),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                        //   child: Container(
+                        //     width: double.infinity,
+                        //     decoration: BoxDecoration(
+                        //       color: FlutterFlowTheme.of(context)
+                        //           .secondaryBackground,
+                        //     ),
+                        //     child: Row(
+                        //       mainAxisSize: MainAxisSize.max,
+                        //       children: [
+                        //         Expanded(
+                        //           child: TextFormField(
+                        //             controller: textController3,
+                        //             autofocus: true,
+                        //             obscureText: false,
+                        //             decoration: InputDecoration(
+                        //               hintText: 'Choose a file',
+                        //               hintStyle: FlutterFlowTheme.of(context)
+                        //                   .bodyText2
+                        //                   .override(
+                        //                     fontFamily: 'Poppins',
+                        //                     color: Color(0x67000000),
+                        //                   ),
+                        //               enabledBorder: OutlineInputBorder(
+                        //                 borderSide: BorderSide(
+                        //                   color: Color(0xFFF6F8FE),
+                        //                   width: 2,
+                        //                 ),
+                        //                 borderRadius: BorderRadius.only(
+                        //                   bottomLeft: Radius.circular(10),
+                        //                   bottomRight: Radius.circular(0),
+                        //                   topLeft: Radius.circular(10),
+                        //                   topRight: Radius.circular(0),
+                        //                 ),
+                        //               ),
+                        //               focusedBorder: OutlineInputBorder(
+                        //                 borderSide: BorderSide(
+                        //                   color: Color(0xFFF6F8FE),
+                        //                   width: 2,
+                        //                 ),
+                        //                 borderRadius: BorderRadius.only(
+                        //                   bottomLeft: Radius.circular(10),
+                        //                   bottomRight: Radius.circular(0),
+                        //                   topLeft: Radius.circular(10),
+                        //                   topRight: Radius.circular(0),
+                        //                 ),
+                        //               ),
+                        //               errorBorder: OutlineInputBorder(
+                        //                 borderSide: BorderSide(
+                        //                   color: Color(0x00000000),
+                        //                   width: 2,
+                        //                 ),
+                        //                 borderRadius: BorderRadius.only(
+                        //                   bottomLeft: Radius.circular(10),
+                        //                   bottomRight: Radius.circular(0),
+                        //                   topLeft: Radius.circular(10),
+                        //                   topRight: Radius.circular(0),
+                        //                 ),
+                        //               ),
+                        //               focusedErrorBorder: OutlineInputBorder(
+                        //                 borderSide: BorderSide(
+                        //                   color: Color(0x00000000),
+                        //                   width: 2,
+                        //                 ),
+                        //                 borderRadius: BorderRadius.only(
+                        //                   bottomLeft: Radius.circular(10),
+                        //                   bottomRight: Radius.circular(0),
+                        //                   topLeft: Radius.circular(10),
+                        //                   topRight: Radius.circular(0),
+                        //                 ),
+                        //               ),
+                        //               filled: true,
+                        //               fillColor: Color(0xFFF6F8FE),
+                        //               prefixIcon: Icon(
+                        //                 FFIcons.kimageicon,
+                        //               ),
+                        //             ),
+                        //             style: FlutterFlowTheme.of(context)
+                        //                 .bodyText1
+                        //                 .override(
+                        //                   fontFamily: 'Sora',
+                        //                   fontSize: 12,
+                        //                   fontWeight: FontWeight.normal,
+                        //                 ),
+                        //           ),
+                        //         ),
+                        //         FFButtonWidget(
+                        //           onPressed: () {
+                        //             print('Button pressed ...');
+                        //           },
+                        //           text: 'Upload',
+                        //           options: FFButtonOptions(
+                        //             width: 130,
+                        //             height: 50,
+                        //             color: Color(0xFF1456F1),
+                        //             textStyle: FlutterFlowTheme.of(context)
+                        //                 .subtitle2
+                        //                 .override(
+                        //                   fontFamily: 'Poppins',
+                        //                   color: Colors.white,
+                        //                 ),
+                        //             borderSide: BorderSide(
+                        //               color: Colors.transparent,
+                        //               width: 1,
+                        //             ),
+                        //             borderRadius: BorderRadius.only(
+                        //               bottomLeft: Radius.circular(0),
+                        //               bottomRight: Radius.circular(10),
+                        //               topLeft: Radius.circular(0),
+                        //               topRight: Radius.circular(10),
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                           child: FFButtonWidget(

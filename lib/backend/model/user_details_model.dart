@@ -47,7 +47,7 @@ class Data {
   dynamic locationLong;
   String? idProf;
   String? documentsApproved;
-  dynamic isOnline;
+  int? isOnline;
   dynamic whatApp;
   dynamic sms;
   dynamic notification;

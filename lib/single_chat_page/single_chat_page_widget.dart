@@ -1,11 +1,14 @@
+import 'package:provider/provider.dart';
+
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../main.dart';
+// import '../main.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 import '../nav_bar_page.dart';
+import '../provider/provider_services.dart';
 
 class SingleChatPageWidget extends StatefulWidget {
   const SingleChatPageWidget({Key? key}) : super(key: key);
@@ -17,10 +20,12 @@ class SingleChatPageWidget extends StatefulWidget {
 class _SingleChatPageWidgetState extends State<SingleChatPageWidget> {
   TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  ProviderServices? providerServices;
 
   @override
   void initState() {
     super.initState();
+    providerServices = Provider.of<ProviderServices>(context, listen: false);
     textController = TextEditingController();
   }
 

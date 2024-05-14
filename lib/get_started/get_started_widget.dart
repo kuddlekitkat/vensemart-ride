@@ -1,10 +1,6 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../sign_with_email/sign_with_email_widget.dart';
 import '../signup/signup_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class GetStartedWidget extends StatefulWidget {
   const GetStartedWidget({Key? key}) : super(key: key);
@@ -31,7 +27,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
           right: 0,
           left: 0,
           child: Container(
-            height: MediaQuery.of(context).size.height / 1.01,
+            height: MediaQuery.of(context).size.height / 1.5,
             width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -47,7 +43,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
           right: 0,
           left: 0,
           child: Container(
-            height: MediaQuery.of(context).size.height / 2,
+            height: MediaQuery.of(context).size.height / 2.0,
             width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
                 color: Colors.white,

@@ -6,17 +6,14 @@ import 'package:provider/provider.dart';
 import 'package:vensemart_delivery/backend/apiservices/validator.dart';
 
 import '../backend/model/general_model.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../get_started/get_started_widget.dart';
-import '../main.dart';
 import '../provider/provider_services.dart';
 import '../sign_with_email/sign_with_email_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
+
+import '../terms_conditions.dart';
 
 class SignupWidget extends StatefulWidget {
   const SignupWidget({Key? key}) : super(key: key);
@@ -26,7 +23,6 @@ class SignupWidget extends StatefulWidget {
 }
 
 class _SignupWidgetState extends State<SignupWidget> {
-
   TextEditingController? textController1;
   TextEditingController? textController2;
   TextEditingController? textController3;
@@ -48,10 +44,9 @@ class _SignupWidgetState extends State<SignupWidget> {
   bool? checkboxValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-
   TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController   phoneNumberController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
@@ -60,33 +55,40 @@ class _SignupWidgetState extends State<SignupWidget> {
     providerServices = Provider.of<ProviderServices>(context, listen: false);
     usernameController = TextEditingController();
     emailController = TextEditingController();
-    phoneNumberController  = TextEditingController();
+    phoneNumberController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
     providerServices = Provider.of<ProviderServices>(context, listen: false);
     _passwordVisible = false;
     deviceInfo = DeviceInfoPlugin();
+    initOneSignal(context);
+    deviceToken = OneSignal.User.pushSubscription.id;
+
     // try and print deviceInfo to see all required stuffs then get the device name and pass it to the registration function
     _getId();
   }
 
+  // bool _requireConsent = true;
 
   Future<void> initOneSignal(BuildContext context) async {
-    /// Set App Id.
-    await OneSignal.shared.setAppId("580dc8b3-a23b-4ef4-9ec9-fa1fd78c83bb");
+    deviceToken = OneSignal.User.pushSubscription.id;
 
-    /// Get the Onesignal userId and update that into the firebase.
-    /// So, that it can be used to send Notifications to users later.̥
-    final status = await OneSignal.shared.getDeviceState();
-    final String? osUserID = status?.userId;
-    deviceToken = osUserID;
-    // We will update this once he logged in and goes to dashboard.
-    ////updateUserProfile(osUserID);
-    // Store it into shared prefs, So that later we can use it.
-    // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
-    await OneSignal.shared.promptUserForPushNotificationPermission(
-      fallbackToSettings: true,
-    );
+    /// Set App Id.
+    // await OneSignal.shared.setAppId("e5db6fdd-df18-49a3-b1c7-c2c27645e144");
+
+    // /// Get the Onesignal userId and update that into the firebase.
+    // /// So, that it can be used to send Notifications to users later.̥
+    // final status = await OneSignal.shared.getDeviceState();
+    // final String? osUserID = status?.userId;
+    // deviceToken = osUserID;
+    // print(deviceToken);
+    // // We will update this once he logged in and goes to dashboard.
+    // ////updateUserProfile(osUserID);
+    // // Store it into shared prefs, So that later we can use it.
+    // // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
+    // await OneSignal.shared.promptUserForPushNotificationPermission(
+    //   fallbackToSettings: true,
+    // );
   }
 
   Future<String?> _getId() async {
@@ -103,16 +105,8 @@ class _SignupWidgetState extends State<SignupWidget> {
     return device;
   }
 
-
-
-
-
-
-
-
   void signUp(context) async {
     if (_globalFormKey.currentState!.validate() && isChecked == true) {
-
       phoneNumber = phoneNumberController.text.trim();
       setState(() {});
       providerServices?.register(map: {
@@ -128,7 +122,6 @@ class _SignupWidgetState extends State<SignupWidget> {
         "state": "FCT",
         "town": "Abuja"
       }, context: context);
-
     }
   }
 
@@ -143,9 +136,8 @@ class _SignupWidgetState extends State<SignupWidget> {
 
   @override
   Widget build(BuildContext context) {
-
-    var screenHeight = MediaQuery.of(context).size.height;
-    var screenWidth = MediaQuery.of(context).size.width;
+    // var screenHeight = MediaQuery.of(context).size.height;
+    // var screenWidth = MediaQuery.of(context).size.width;
 
     Color getColor(Set<MaterialState> states) {
       const Set<MaterialState> interactiveStates = <MaterialState>{
@@ -214,7 +206,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 prefixIcon: const Icon(Icons.person_rounded),
                                 hintStyle: TextStyle(color: Colors.grey[600]),
                                 fillColor:
-                                const Color.fromRGBO(250, 250, 254, 1)),
+                                    const Color.fromRGBO(250, 250, 254, 1)),
                           ),
                         ),
                       ),
@@ -241,7 +233,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 prefixIcon: const Icon(Icons.email_rounded),
                                 hintStyle: TextStyle(color: Colors.grey[600]),
                                 fillColor:
-                                const Color.fromRGBO(250, 250, 254, 1)),
+                                    const Color.fromRGBO(250, 250, 254, 1)),
                           ),
                         ),
                       ),
@@ -286,7 +278,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 ),
                                 hintStyle: TextStyle(color: Colors.grey[600]),
                                 fillColor:
-                                const Color.fromRGBO(250, 250, 254, 1)),
+                                    const Color.fromRGBO(250, 250, 254, 1)),
                           ),
                         ),
                       ),
@@ -323,11 +315,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           ? Icons.visibility
                                           : Icons.visibility_off,
                                       color:
-                                      Theme.of(context).primaryColorDark),
+                                          Theme.of(context).primaryColorDark),
                                 ),
                                 hintStyle: TextStyle(color: Colors.grey[600]),
                                 fillColor:
-                                const Color.fromRGBO(250, 250, 254, 1)),
+                                    const Color.fromRGBO(250, 250, 254, 1)),
                           ),
                         ),
                       ),
@@ -341,7 +333,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             Checkbox(
                               checkColor: Colors.white,
                               fillColor:
-                              MaterialStateProperty.resolveWith(getColor),
+                                  MaterialStateProperty.resolveWith(getColor),
                               value: isChecked,
                               onChanged: (bool? value) {
                                 setState(() {
@@ -359,7 +351,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 Navigator.push(
                                   context!,
                                   MaterialPageRoute(
-                                    builder: (context) => SignWithEmailWidget(),
+                                    builder: (context) => TermsScreen(),
                                   ),
                                 );
                               },
@@ -390,17 +382,17 @@ class _SignupWidgetState extends State<SignupWidget> {
                               ),
                               child: value.isLoading == true
                                   ? const SpinKitCircle(
-                                color: Colors.white,
-                              )
-                                  : const Center(
-                                child: Text(
-                                  'Register',
-                                  style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
+                                    )
+                                  : const Center(
+                                      child: Text(
+                                        'Register',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
                             ),
                           ),
                         ),
@@ -423,7 +415,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignWithEmailWidget(),
+                                  builder: (context) =>
+                                      const SignWithEmailWidget(),
                                 ),
                               );
                             },
@@ -443,7 +436,6 @@ class _SignupWidgetState extends State<SignupWidget> {
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 }

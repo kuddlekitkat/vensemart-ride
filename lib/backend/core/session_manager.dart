@@ -16,9 +16,11 @@ class SessionManager {
   }
 
   static const String keyAuthToken = 'auth_token';
+  static const String deviceTokenKey = 'device_token';
   static const String logginKey = 'loggin';
 
   String get authToken => sharedPreferences!.getString(keyAuthToken) ?? '';
+  String get deviceToken => sharedPreferences!.getString(deviceTokenKey) ?? '';
   bool get isLoggedIn => sharedPreferences!.getBool(logginKey) ?? false;
 
   set isLoggedIn(bool logging) =>

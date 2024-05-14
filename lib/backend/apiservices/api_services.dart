@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:convert' as convert;
-import 'package:dio/adapter.dart';
+// import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
+import 'package:dio/io.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../core/session_manager.dart';
@@ -16,12 +16,25 @@ mixin ApiServices {
   Future<Dio> getDio() async {
     Dio dio;
     String baseUrl = 'https://api.vensemart.com/api/';
+    // String baseUrl = 'http://10.0.2.2:8000/api/';
 
     BaseOptions _options = BaseOptions(
       baseUrl: baseUrl,
       headers: _requestHeaders,
-      connectTimeout: 200000,
-      receiveTimeout: 200000,
+      connectTimeout: Duration(
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          milliseconds: 200000,
+          microseconds: 0),
+      receiveTimeout: Duration(
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          milliseconds: 200000,
+          microseconds: 0),
     );
 
     dio = Dio(_options);
@@ -145,8 +158,8 @@ mixin ApiServices {
   }
 
   getAuthToken() async {
-      String? accessToken = SessionManager.instance.authToken;
-      return accessToken;
+    String? accessToken = SessionManager.instance.authToken;
+    return accessToken;
   }
 
   checkForExpiredToken(DioError e) {
@@ -156,7 +169,6 @@ mixin ApiServices {
           .toString()
           .toLowerCase()
           .contains("unauthenticated")) {
-        GetIt locator = GetIt.instance;
         // final NavigationService _navigationService =
         //     locator<NavigationService>();
         // _navigationService.logOut();

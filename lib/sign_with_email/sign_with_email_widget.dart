@@ -1,21 +1,16 @@
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:vensemart_delivery/backend/apiservices/validator.dart';
+import 'package:vensemart_delivery/forget_password.dart';
 
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../get_started/get_started_widget.dart';
-import '../main.dart';
 import '../provider/provider_services.dart';
 import '../signup/signup_widget.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class SignWithEmailWidget extends StatefulWidget {
   const SignWithEmailWidget({Key? key}) : super(key: key);
@@ -28,10 +23,27 @@ class _SignWithEmailWidgetState extends State<SignWithEmailWidget> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  String? _currentAddress;
+  Position? _currentPosition;
+
   ProviderServices? providerServices;
   final _globalFormKey = GlobalKey<FormState>();
 
-  // final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  Future<void> _getCurrentPosition() async {
+    final hasPermission = await providerServices?.handleLocationPermission();
+    if (hasPermission == true) {
+      final position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      setState(() {
+        _currentPosition = position;
+      });
+    } else {
+      print('Permission denied');
+      await providerServices?.handleLocationPermission();
+    }
+  }
+
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   String? deviceToken;
   var deviceInfo;
   String? device = '';
@@ -55,37 +67,34 @@ class _SignWithEmailWidgetState extends State<SignWithEmailWidget> {
   void initState() {
     providerServices = Provider.of<ProviderServices>(context, listen: false);
     print('${providerServices?.userDetailModel?.data?.name}');
-    _getId();
+
     _passwordVisible = false;
     passwordVisibility = false;
     // _firebaseMessaging.getToken().then((token) {
     //   deviceToken = token;
     //   print("token is $token");
     // });
+    deviceToken = OneSignal.User.pushSubscription.id;
+    _getCurrentPosition();
 
     initOneSignal(context);
     super.initState();
+    deviceInfo = DeviceInfoPlugin();
+    _getId();
   }
 
   Future<void> initOneSignal(BuildContext context) async {
     /// Set App Id.
-    await OneSignal.shared.setAppId("580dc8b3-a23b-4ef4-9ec9-fa1fd78c83bb");
+    // // await OneSignal.shared.setAppId("580dc8b3-a23b-4ef4-9ec9-fa1fd78c83bb");
+    deviceToken = OneSignal.User.pushSubscription.id;
 
-    /// Get the Onesignal userId and update that into the firebase.
-    /// So, that it can be used to send Notifications to users later.̥
-    final status = await OneSignal.shared.getDeviceState();
-    final String? osUserID = status?.userId;
-    deviceToken = osUserID;
-    // We will update this once he logged in and goes to dashboard.
-    ////updateUserProfile(osUserID);
-    // Store it into shared prefs, So that later we can use it.
-    // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
-    await OneSignal.shared.promptUserForPushNotificationPermission(
-      fallbackToSettings: true,
-    );
+    // await OneSignal.shared.promptUserForPushNotificationPermission(
+    //   fallbackToSettings: true,
+    // );
   }
 
   void signIn(context) async {
+    _getCurrentPosition();
     if (_globalFormKey.currentState!.validate()) {
       providerServices?.signIn(map: {
         "username": emailController.text,
@@ -95,6 +104,10 @@ class _SignWithEmailWidgetState extends State<SignWithEmailWidget> {
         "device_type": Platform.isIOS ? "iPhone" : "android",
         "device_name": deviceInfo.toString(),
         "device_token": "$deviceToken",
+        "location_lat": _currentPosition?.latitude.toString() ?? '9.0787',
+        "location_long": _currentPosition?.longitude.toString() ?? '7.47018',
+        "location": _currentAddress.toString() ?? 'Oneal Center Jabi',
+        "state": "Abuja",
       }, context: context);
     }
   }
@@ -246,7 +259,7 @@ class _SignWithEmailWidgetState extends State<SignWithEmailWidget> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => SignWithEmailWidget(),
+                                  builder: (context) => ForgotPasswordScreen(),
                                 ),
                               );
                             },

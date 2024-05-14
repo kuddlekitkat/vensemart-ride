@@ -23,12 +23,12 @@ class ServiceHomeModel {
 }
 
 class Data {
-  int? totalOrder;
-  int? totalEarning;
-  int? todayOrder;
+  dynamic totalOrder;
+  dynamic totalEarning;
+  dynamic todayOrder;
   bool? availability;
-  int? pendingOrder;
-  int? completedOrder;
+  dynamic pendingOrder;
+  dynamic completedOrder;
   // List<dynamic>? requests;
 
 

@@ -1,8 +1,12 @@
+import 'package:provider/provider.dart';
+
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+// import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
+
+import '../provider/provider_services.dart';
 
 class RateAppWidget extends StatefulWidget {
   const RateAppWidget({Key? key}) : super(key: key);
@@ -13,6 +17,14 @@ class RateAppWidget extends StatefulWidget {
 
 class _RateAppWidgetState extends State<RateAppWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  ProviderServices? providerServices;
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    providerServices = Provider.of<ProviderServices>(context, listen: false);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

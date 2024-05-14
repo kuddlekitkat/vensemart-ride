@@ -5,8 +5,9 @@
 
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
    <application
-        android:label="vensemart-delivery"
+        android:label="Vensemart Delivery"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -36,6 +37,12 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
+              <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/ic_notification" />
+              <!-- <meta-data android:name="com.google.firebase.messaging.default_notification_sound" android:resource="@raw/notification_sound" /> -->
+
+              <!-- <meta-data    android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/colorAccent" /> -->
+
+              
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -48,6 +55,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyAacoc4GouVQt7_vMc7d5UMdsnBnT9sFzc"/>
+
 
 
 

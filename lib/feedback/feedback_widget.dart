@@ -1,13 +1,16 @@
+import 'package:provider/provider.dart';
+
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
+// import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 import '../nav_bar_page.dart';
+import '../provider/provider_services.dart';
 
 class FeedbackWidget extends StatefulWidget {
   const FeedbackWidget({Key? key}) : super(key: key);
@@ -18,11 +21,13 @@ class FeedbackWidget extends StatefulWidget {
 
 class _FeedbackWidgetState extends State<FeedbackWidget> {
   TextEditingController? textController;
-  double? ratingBarValue;
+  double? ratingBarValue = 5;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  ProviderServices? providerServices;
 
   @override
   void initState() {
+    providerServices = Provider.of<ProviderServices>(context, listen: false);
     super.initState();
     textController = TextEditingController();
   }

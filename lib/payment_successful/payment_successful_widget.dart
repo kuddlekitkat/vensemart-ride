@@ -1,7 +1,10 @@
+import 'package:provider/provider.dart';
+
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../provider/provider_services.dart';
 import '../transaction_details/transaction_details_widget.dart';
 import '../withdraw_page/withdraw_page_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +20,14 @@ class PaymentSuccessfulWidget extends StatefulWidget {
 
 class _PaymentSuccessfulWidgetState extends State<PaymentSuccessfulWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  ProviderServices? providerServices;
+  @override
+  void initState() {
 
+    providerServices = Provider.of<ProviderServices>(context, listen: false);
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

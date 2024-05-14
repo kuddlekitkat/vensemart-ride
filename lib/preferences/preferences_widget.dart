@@ -1,3 +1,5 @@
+import 'package:provider/provider.dart';
+
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../nav_bar_page.dart';
+import '../provider/provider_services.dart';
 
 class PreferencesWidget extends StatefulWidget {
   const PreferencesWidget({Key? key}) : super(key: key);
@@ -19,6 +22,15 @@ class _PreferencesWidgetState extends State<PreferencesWidget> {
   bool? switchListTileValue2;
   bool? switchListTileValue3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  ProviderServices? providerServices;
+
+  @override
+  void initState() {
+
+    providerServices = Provider.of<ProviderServices>(context, listen: false);
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -251,6 +263,7 @@ class _PreferencesWidgetState extends State<PreferencesWidget> {
                             ),
                           ],
                         ),
+                     
                       ],
                     ),
                   ),

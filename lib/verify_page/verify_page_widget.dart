@@ -6,7 +6,7 @@ import '../manage_bank_page/manage_bank_page_widget.dart';
 import '../nin_verification/nin_verification_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 class VerifyPageWidget extends StatefulWidget {
   const VerifyPageWidget({Key? key}) : super(key: key);

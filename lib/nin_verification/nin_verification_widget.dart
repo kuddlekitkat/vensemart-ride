@@ -1,8 +1,11 @@
+import 'package:provider/provider.dart';
+
 import '../account_verify_page/account_verify_page_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../provider/provider_services.dart';
 import '../verify_page/verify_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,10 +20,12 @@ class NinVerificationWidget extends StatefulWidget {
 class _NinVerificationWidgetState extends State<NinVerificationWidget> {
   TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  ProviderServices? providerServices;
 
   @override
   void initState() {
     super.initState();
+    providerServices = Provider.of<ProviderServices>(context, listen: false);
     textController = TextEditingController();
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vensemart_delivery/index.dart';
 import 'package:vensemart_delivery/request_page/request_page_widget.dart';
 
 import 'account_page/account_page_widget.dart';
@@ -33,7 +34,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'HomePage': HomePageWidget(),
       'RequestPage': RequestPageWidget(),
-      'ChatPage': ChatPageWidget(),
+      'Wallet': WalletPageWidget(),
       'AccountPage': AccountPageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -78,14 +79,14 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              FFIcons.kvector3,
+              FFIcons.kbank,
               size: 20,
             ),
             activeIcon: Icon(
-              FFIcons.kvector3,
+              FFIcons.kbank,
               size: 24,
             ),
-            label: 'Chat',
+            label: 'Wallet',
             tooltip: '',
           ),
           BottomNavigationBarItem(

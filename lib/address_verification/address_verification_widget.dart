@@ -1,10 +1,13 @@
+import 'package:provider/provider.dart';
+
 import '../account_verify_page/account_verify_page_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../provider/provider_services.dart';
 
 class AddressVerificationWidget extends StatefulWidget {
   const AddressVerificationWidget({Key? key}) : super(key: key);
@@ -21,9 +24,11 @@ class _AddressVerificationWidgetState extends State<AddressVerificationWidget> {
   TextEditingController? textController4;
   TextEditingController? textController5;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  ProviderServices? providerServices;
 
   @override
   void initState() {
+    providerServices = Provider.of<ProviderServices>(context, listen: false);
     super.initState();
     textController1 = TextEditingController();
     textController2 = TextEditingController();

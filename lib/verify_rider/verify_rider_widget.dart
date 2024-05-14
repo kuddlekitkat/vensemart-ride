@@ -8,7 +8,7 @@ import '../signup/signup_widget.dart';
 import '../vehicle_details/vehicle_details_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 class VerifyRiderWidget extends StatefulWidget {
   const VerifyRiderWidget({Key? key}) : super(key: key);
@@ -27,7 +27,6 @@ class _VerifyRiderWidgetState extends State<VerifyRiderWidget> {
     super.initState();
     providerServices = Provider.of<ProviderServices>(context, listen: false);
     pinCodeController = TextEditingController();
-
   }
 
   @override
